@@ -1,6 +1,19 @@
+## Requirement
+- java 1.8 over
 
-##Run App with encrypt
-java -jar jasypt-1.9.2.jar  org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI input="world" password=ncsoft
+##Build locally with encrypt
+- java -jar jasypt-1.9.2.jar  org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI input=world password=ncsoft  algorithm=PBEWITHSHA256AND128BITAES-CBC-BC
+
+## Issue
+If you encounter  issues message "java.security.NoSuchProviderException: no such provider: BC"
+check below
+- Check that the java home is set in the configuration
+
+- Check which java environment is used for application
+
+- Check that \jre\lib\security\java.security has bouncycastle provider entry. i.e. security.provider.9=org.bouncycastle.jce.provider.BouncyCastleProvider
+
+- Also check that bouncy castle jar is added to \jre\lib\ext\ bcprov-jdk15on-147.jar (latest one to work for java 1.5 & 1.6
 
 
 ## Encryption Configuration
